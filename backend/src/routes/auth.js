@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const prisma = require('../db');
 
 router.post('/signup', async (req, res) => {
-    console.log('Signup request received with body:', req.body);
   try {
     const { name, email, password } = req.body;
     if (!name || !email || !password)
@@ -22,7 +21,6 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    console.log('Login request received with body:', req.body);
   try {
     const { email, password } = req.body;
     const user = await prisma.user.findUnique({ where: { email } });
